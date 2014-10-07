@@ -16,7 +16,9 @@ sudo npm -g install sails
 To build and run the app locally run the following commands:
 
 1. Clone master repo into targeted directory
-2. Run with `sails lift`
+2. Make to have your config/local.js configured with the database credentials
+3. Install dependancies with `npm install`
+4. Run with `sails lift`
 
 
 ## Contributing
