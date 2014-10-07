@@ -6,6 +6,10 @@
  */
 
 module.exports = {
-	
+  create: function(req, res, next) {
+
+    console.log('create user function');
+}
+
 };
 
