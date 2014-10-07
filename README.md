@@ -1,4 +1,7 @@
 schedules-backend
 =================
 
-Backend server for schedules built with Sails 
+a [Sails](http://sailsjs.org) application
+
+Backend server for [schedules](https://github.com/timkendall/schedules) built with Sails
+
