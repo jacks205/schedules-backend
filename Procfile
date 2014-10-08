@@ -1,1 +1,1 @@
-web: npm install && sail lift
+web: node app.js

@@ -19,7 +19,7 @@ module.exports = {
 
     schoolId: {
       type: 'string',
-      required: true;
+      required: true
     }
   }
 };
