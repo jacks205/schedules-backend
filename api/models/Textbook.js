@@ -17,11 +17,11 @@ module.exports = {
       type: 'string'
     },
 
-    // sections:{
-    //   collection: 'section',
-    //   via: 'textbooks',
-    //   dominant: true
-    // },
+    sections:{
+      collection: 'section',
+      via: 'textbooks',
+      dominant: true
+    },
 
     onlineCode:{
       type: 'boolean'

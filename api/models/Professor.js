@@ -14,9 +14,9 @@ module.exports = {
     rmpUrl:{
       type: 'string'
     },
-    // sections:{
-    //   collection: 'section',
-    //   via: 'professor'
-    // }
+    sections:{
+      collection: 'section',
+      via: 'professor'
+    }
   }
 }

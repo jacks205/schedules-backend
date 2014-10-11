@@ -7,6 +7,19 @@
 
 module.exports = {
 
+  types:{
+    isSchool: function(name){
+      School.find()
+      .where({ name: name})
+      .exec(function(err, schools){
+        if(err) return false;
+        console.log(name);
+        return schools[0].name == name;
+      });
+    }
+  },
+
+
   attributes: {
     name:{
       type: 'string',
@@ -37,14 +50,15 @@ module.exports = {
       required: true
     },
 
-    // sections: {
-    //   collection: 'section',
-    //   via: 'course'
-    // },
+    sections: {
+      collection: 'section',
+      via: 'course'
+    },
 
     school: {
       model: 'School',
-      required: true
+      required: true,
+      isSchool: true
     },
 
     majorOnly:{
@@ -55,16 +69,16 @@ module.exports = {
       type: 'string'
     },
 
-    // prereqs:{
-    //   collection: 'course',
-    //   via: 'requiredFor'
-    // },
+    prereqs:{
+      collection: 'course',
+      via: 'requiredFor'
+    },
 
-    // requiredFor:{
-    //   collection: 'course',
-    //   via: 'prereqs',
-    //   dominant: true
-    // },
+    requiredFor:{
+      collection: 'course',
+      via: 'prereqs',
+      dominant: true
+    },
 
     hardness:{
       type:'integer'

@@ -1,47 +1,57 @@
 module.exports = {
+    schema: true,
 
-  sectionId: {
-    type: 'string',
-    required: true
-  },
+    types: {
+      isProfessor: function(professorId){
 
-  // professor:{
-  //   model: 'Professor'
-  // },
+      },
+      isTextbook: function(textbookId){
 
-  meets:{
-    type: 'string',
-    required: true
-  },
+      },
+      isCourse: function(courseId){
 
-  duration:{
-    type: 'integer',
-  },
+      }
+    },
 
-  start:{
-    type: 'time'
-  },
-
-  end:{
-    type: 'time'
-  },
-
-  capacity:{
-    type: 'integer'
-  },
-
-  available:{
-    type:'integer'
-  },
-  waitlist:{
-    type:'integer'
-  },
-  // texbooks:{
-  //   collection: 'textbook',
-  //   via: 'sections'
-  // },
-  // course:{
-  //   model: 'Course'
-  // }
-
+    attributes: {
+        sectionId: {
+            type: 'string',
+            required: true
+        },
+        professor:{
+          model: 'Professor',
+          isProfessor: true
+        },
+        meets: {
+            type: 'string',
+            required: true
+        },
+        duration: {
+            type: 'integer',
+        },
+        start: {
+            type: 'time'
+        },
+        end: {
+            type: 'time'
+        },
+        capacity: {
+            type: 'integer'
+        },
+        available: {
+            type: 'integer'
+        },
+        waitlist: {
+            type: 'integer'
+        },
+        textbooks: {
+            collection: 'textbook',
+            via: 'sections',
+            isTextbook: true
+        },
+        course:{
+          model: 'Course',
+          isCourse: true
+        }
+    }
 }
