@@ -46,6 +46,27 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
 
+  'get /course/:id': 'CourseController.read',
+  'get /course': 'CourseController.read',
+
+  'get /school/:id': 'SchoolController.read',
+  'get /school': 'SchoolController.read',
+
+  'get /major/:id': 'MajorController.read',
+  'get /major': 'MajorController.read',
+
+  'get /professor/:id': 'ProfessorController.read',
+  'get /professor': 'ProfessorController.read',
+
+  'get /section/:id': 'SectionController.read',
+  'get /section': 'SectionController.read',
+
+  'get /textbook/:id': 'TextbookController.read',
+  'get /textbook': 'TextbookController.read',
+
+  'get /role/:id': 'RoleController.read',
+  'get /role': 'RoleController.read',
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

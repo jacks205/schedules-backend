@@ -1,26 +1,13 @@
 module.exports = {
     schema: true,
 
-    types: {
-      isProfessor: function(professorId){
-
-      },
-      isTextbook: function(textbookId){
-
-      },
-      isCourse: function(courseId){
-
-      }
-    },
-
     attributes: {
-        sectionId: {
+        sectionNumber: {
             type: 'string',
             required: true
         },
         professor:{
-          model: 'Professor',
-          isProfessor: true
+          model: 'Professor'
         },
         meets: {
             type: 'string',
@@ -46,12 +33,32 @@ module.exports = {
         },
         textbooks: {
             collection: 'textbook',
-            via: 'sections',
-            isTextbook: true
+            via: 'sections'
         },
         course:{
           model: 'Course',
-          isCourse: true
+          required: true
         }
-    }
+    },
+
+  beforeCreate: function(values, callback){
+    Section.findOne()
+    .where({ sectionNumber: values.sectionNumber, course: values.course })
+    .then(function(section){
+      if(section) throw 'Error.Section.AlreadyExists'; //simple check on the name to see if section name exists already
+      else{
+        Course.findOne()
+        .where({ id: values.course })
+        .then(function(course){
+          if(!course) callback('Error.Course.NotFound'); //because throws in nested promises don't get caught by outer catch
+          callback();
+        });
+      }
+    })
+    .catch(function(err){
+      console.log(err);
+      callback(err);
+    });
+
+  }
 }

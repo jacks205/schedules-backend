@@ -5,11 +5,7 @@
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 module.exports = {
-    types: {
-        isProfessor: function(professorId) {},
-        isCourse: function(courseId) {},
-        isUser: function(userId) {}
-    },
+
     attributes: {
         name: {
             type: 'string',
@@ -17,18 +13,29 @@ module.exports = {
         },
         courses: {
             collection: 'course',
-            via: 'school',
-            isCourse: true
+            via: 'school'
         },
         professors: {
             collection: 'professor',
-            via: 'school',
-            isProfessor: true
+            via: 'school'
         },
         students: {
             collection: 'user',
-            via: 'school',
-            isUser: true
+            via: 'school'
         }
-    }
+    },
+
+  beforeCreate: function(values, callback){
+    School.findOne()
+    .where({ name: values.name })
+    .then(function(school){
+      if(school) throw 'Error.School.AlreadyExists'; //simple check on the name to see if school name exists already
+      callback();
+    })
+    .catch(function(err){
+      console.log(err);
+      callback(err);
+    });
+
+  }
 };

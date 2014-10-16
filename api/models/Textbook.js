@@ -31,5 +31,20 @@ module.exports = {
       type:'array'
     }
 
+  },
+
+  beforeCreate: function(values, callback){
+    //Find if textbook already exists
+    Textbook.findOne()
+    .where({ isbn: values.isbn })
+    .then(function(textbook){
+      if(textbook) throw 'Error.Textbook.AlreadyExists';
+      callback();
+    })
+    .catch(function(err){
+      console.log(err);
+      callback(err);
+    });
+
   }
 }
