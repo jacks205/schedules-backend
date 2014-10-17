@@ -33,6 +33,8 @@ function findOneCourseWithId(courseId, callback) {
     })
     .populate('school')
     .populate('sections')
+    .populate('prereqs')
+    .populate('requiredFor')
     .exec(function(err, course) {
         callback(err, course);
     });
@@ -42,6 +44,8 @@ function findAllCourses(callback) {
     Course.find()
     .populate('school')
     .populate('sections')
+    .populate('prereqs')
+    .populate('requiredFor')
     .exec(function(err, courses) {
         callback(err, courses);
     })

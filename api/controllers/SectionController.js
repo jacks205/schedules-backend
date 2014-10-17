@@ -28,6 +28,7 @@ function findOneSectionWithId(sectionId, callback) {
     })
     .populate('textbooks')
     .populate('course')
+    .populate('professor')
     .exec(function(err, section) {
         callback(err, section);
     });
@@ -37,6 +38,7 @@ function findAllSections(callback) {
     Section.find()
     .populate('textbooks')
     .populate('course')
+    .populate('professor')
     .exec(function(err, sections) {
         callback(err, sections);
     })
