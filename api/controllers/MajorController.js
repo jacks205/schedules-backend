@@ -20,7 +20,7 @@ module.exports = {
 
 }
 
-//Finds and populates
+//Finds major with id
 function findOneMajorWithId(majorId, callback) {
     Major.findOne()
     .where({
