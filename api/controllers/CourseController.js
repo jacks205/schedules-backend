@@ -35,6 +35,7 @@ function findOneCourseWithId(courseId, callback) {
     .populate('sections')
     .populate('prereqs')
     .populate('requiredFor')
+    .populate('major')
     .exec(function(err, course) {
         callback(err, course);
     });
@@ -46,6 +47,7 @@ function findAllCourses(callback) {
     .populate('sections')
     .populate('prereqs')
     .populate('requiredFor')
+    .populate('major')
     .exec(function(err, courses) {
         callback(err, courses);
     })

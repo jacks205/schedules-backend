@@ -24,6 +24,11 @@ module.exports = {
       callback(err);
     });
 
+  },
+
+  beforeUpdate: function(values, callback){
+    console.log(values);
+    callback('sdf');
   }
 }
 
