@@ -106,8 +106,106 @@ module.exports = {
       // console.log(err);
       callback(err);
     });
+  },
 
+  // beforeUpdate: function(values, callback){
+  //   console.log(this);
+  //   try{
+      // if(values.sections){
+      //   var sections =  values.sections;
+      //   sections.forEach(function(element){
+      //     findOneSectionWithId(element, function(err, section){
+      //       if(err) throw err;
+      //       if(!section) throw 'Error.Section.NotFound';
+      //     })
+      //   });
+      // }
+      // if(values.major){
+      //   var major = values.major;
+      //   findOneMajorWithId(major, function(err, major){
+      //     if(err) throw err;
+      //     if(!major) throw 'Error.Major.NotFound';
+      //   });
+      // }
+      // if(values.school){
+      //   var school = values.school;
+      //   findOneSchoolWithId(school, function(err, school){
+      //     if(err) throw err;
+      //     if(!school) throw 'Error.School.NotFound';
+      //   });
+      // }
+  //   }catch(err){
+  //     callback(err)
+  //   }
+  // },
 
+  beforeUpdate: function(values, callback){
+    Course.findOne({ id: 0})
+    .then(function(){
+      if(values.sections){
+        callback('Error.Course.IncorrectModel');
+      }
+    })
+    .then(function(){
+      if(values.major){
+        console.log('Major');
+        var major = values.major;
+        findOneMajorWithId(major, function(err, major){
+          if(err) callback(err);
+          if(!major) callback('Error.Major.NotFound');
+          return;
+        });
+      }
+    })
+    .then(function(){
+      if(values.school){
+        console.log('School');
+        var school = values.school;
+        findOneSchoolWithId(school, function(err, school){
+          if(err) callback(err);
+          if(!school) callback('Error.School.NotFound');
+          return;
+        });
+      }
+    })
+    .then(function(){
+      console.log('Callback');
+      callback();
+    })
+    .catch(function(err){
+      callback(err);
+    });
   }
 };
 
+
+
+function findOneSectionWithId(sectionId, callback){
+  Section.findOne()
+  .where( { id: sectionId })
+  .exec(function(err, section){
+    callback(err, section);
+  });
+}
+
+//Finds major with id
+function findOneMajorWithId(majorId, callback) {
+    Major.findOne()
+    .where({
+        id: majorId
+    })
+    .exec(function(err, major) {
+        callback(err, major);
+    });
+}
+
+//Finds and populates school with given courseId and doesn't populate
+function findOneSchoolWithId(schoolId, callback) {
+    School.findOne()
+    .where({
+        id: schoolId
+    })
+    .exec(function(err, school) {
+        callback(err, school);
+    });
+}

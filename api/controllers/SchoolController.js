@@ -11,7 +11,7 @@ module.exports = {
     var schoolId = req.param('id');
         //If requesting a specific school with id
         if (schoolId) {
-            findOneSchoolWithId(schoolId, function(err, school) {
+            findOneSchoolWithIdAndPopulate(schoolId, function(err, school) {
               if(school)
                 res.send(school);
               else
@@ -19,7 +19,7 @@ module.exports = {
             });
         } else {
             //No schoolId was given
-            findAllSchools(function(err, schools) {
+            findAllSchoolsAndPopulate(function(err, schools) {
               if(err) res.json({ error: err });
                 res.send(schools);
             })
@@ -28,8 +28,8 @@ module.exports = {
 
 };
 
-//Finds and populates school with given courseId
-function findOneSchoolWithId(schoolId, callback) {
+//Finds and populates school with given courseId and populates fields
+function findOneSchoolWithIdAndPopulate(schoolId, callback) {
     School.findOne()
     .where({
         id: schoolId
@@ -42,7 +42,7 @@ function findOneSchoolWithId(schoolId, callback) {
     });
 }
 //Returns all schools (returns all schools and attributes populated)
-function findAllSchools(callback) {
+function findAllSchoolsAndPopulate(callback) {
     School.find()
     .populate('professors')
     .populate('courses')
