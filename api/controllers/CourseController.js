@@ -5,7 +5,9 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 module.exports = {
+
     read: function(req, res) {
+      // console.log('teststsete');
         var courseId = req.param('id');
         //If requesting a specific course with id
         if (courseId) {

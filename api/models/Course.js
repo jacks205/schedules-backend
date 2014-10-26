@@ -108,36 +108,6 @@ module.exports = {
     });
   },
 
-  // beforeUpdate: function(values, callback){
-  //   console.log(this);
-  //   try{
-      // if(values.sections){
-      //   var sections =  values.sections;
-      //   sections.forEach(function(element){
-      //     findOneSectionWithId(element, function(err, section){
-      //       if(err) throw err;
-      //       if(!section) throw 'Error.Section.NotFound';
-      //     })
-      //   });
-      // }
-      // if(values.major){
-      //   var major = values.major;
-      //   findOneMajorWithId(major, function(err, major){
-      //     if(err) throw err;
-      //     if(!major) throw 'Error.Major.NotFound';
-      //   });
-      // }
-      // if(values.school){
-      //   var school = values.school;
-      //   findOneSchoolWithId(school, function(err, school){
-      //     if(err) throw err;
-      //     if(!school) throw 'Error.School.NotFound';
-      //   });
-      // }
-  //   }catch(err){
-  //     callback(err)
-  //   }
-  // },
 
   beforeUpdate: function(values, callback){
     Course.findOne({ id: 0})
