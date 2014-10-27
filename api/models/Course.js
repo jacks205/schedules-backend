@@ -91,14 +91,14 @@ module.exports = {
         });
       }
     })
-    .then(function(){
-      Major.findOne()
-      .where({ id: values.major })
-      .then(function(major){
-        if(!major) callback('Error.Major.NotFound');
-        callback();
-      });
-    })
+    // .then(function(){
+    //   Major.findOne()
+    //   .where({ id: values.major })
+    //   .then(function(major){
+    //     if(!major) callback('Error.Major.NotFound');
+    //     callback();
+    //   });
+    // })
     .catch(function(err){
       // console.log(err);
       callback(err);
