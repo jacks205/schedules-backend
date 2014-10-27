@@ -1,4 +1,5 @@
 module.exports = {
+  schema: true,
   attributes:{
     role:{
       type: 'string',

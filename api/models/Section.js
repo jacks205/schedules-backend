@@ -3,24 +3,23 @@ module.exports = {
 
     attributes: {
         sectionNumber: {
-            type: 'string',
-            required: true
+            type: 'string'
         },
         professor:{
           model: 'Professor'
         },
         meets: {
-            type: 'string',
+            type: 'array',
             required: true
         },
         duration: {
             type: 'integer',
         },
         start: {
-            type: 'time'
+            type: 'string'
         },
         end: {
-            type: 'time'
+            type: 'string'
         },
         capacity: {
             type: 'integer'

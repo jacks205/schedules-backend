@@ -6,7 +6,7 @@
 */
 
 module.exports = {
-
+  schema: true,
 
   attributes: {
     name:{
@@ -24,18 +24,15 @@ module.exports = {
     },
 
     major: {
-      model: 'Major',
-      required: true
+      model: 'Major'
     },
 
     level: {
-      type: 'integer',
-      required: true
+      type: 'integer'
     },
 
     credits:{
-      type: 'integer',
-      required: true
+      type: 'integer'
     },
 
     sections: {
