@@ -79,7 +79,7 @@ module.exports = {
     //Find if major exists
     console.log(values);
     Course.findOne()
-    .where({ courseId: values.courseId })
+    .where({ courseId: values.courseId, school: values.school })
     .then(function(course){
       if(course) throw 'Error.Course.AlreadyExists';
       else{
@@ -88,6 +88,7 @@ module.exports = {
         .then(function(school){
           console.log(school);
           if(!school) callback('Error.School.NotFound'); //beacuse throws in nested promises don't get caught by outer catch method
+          callback();
         });
       }
     })
