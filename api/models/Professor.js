@@ -27,7 +27,7 @@ module.exports = {
   beforeCreate: function(values, callback){
     //Find of
     Professor.findOne()
-    .where({ name: values.name })
+    .where({ name: values.lastName })
     .then(function(prof){
       if(prof) throw 'Error.Professor.AlreadyExists';
       callback();
