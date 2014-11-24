@@ -1,4 +1,4 @@
-module.exports = {
+vmodule.exports = {
   schema: true,
   attributes: {
     isbn:{

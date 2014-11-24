@@ -16,10 +16,10 @@ module.exports = {
             type: 'integer',
         },
         start: {
-            type: 'string'
+            type: 'integer'
         },
         end: {
-            type: 'string'
+            type: 'integer'
         },
         capacity: {
             type: 'integer'
