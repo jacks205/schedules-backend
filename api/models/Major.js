@@ -28,7 +28,6 @@ module.exports = {
 
   beforeUpdate: function(values, callback){
     console.log(values);
-    callback('sdf');
   }
 }
 
