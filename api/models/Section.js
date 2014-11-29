@@ -37,6 +37,9 @@ module.exports = {
         course:{
           model: 'Course',
           required: true
+        },
+        location: {
+          type: 'string'
         }
     },
 
