@@ -58,8 +58,8 @@ module.exports.routes = {
   // 'get /professor/:id': 'ProfessorController.read',
   // 'get /professor': 'ProfessorController.read',
 
-  // 'get /section/:id': 'SectionController.read',
-  // 'get /section': 'SectionController.read',
+  'get /section/:id': 'SectionController.read',
+  'get /section': 'SectionController.read',
 
   // 'get /textbook/:id': 'TextbookController.read',
   // 'get /textbook': 'TextbookController.read',

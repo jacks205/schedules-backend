@@ -69,7 +69,7 @@ module.exports = {
     },
     rating:{
       type:'integer'
-    }
+    },
 
   },
 

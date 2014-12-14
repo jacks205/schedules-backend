@@ -11,11 +11,11 @@ module.exports = {
                 res.json({ error: 'Error.Section.NotFound' });
             });
         } else {
-            //No sectionId was given
-            findAllSectionsAndPopulate(function(err, sections) {
+            // No sectionId was given
+            findAllSections(function(err, sections) {
               if(err) res.json({ error: err });
                 res.send(sections);
-            })
+            });
         }
   }
 
@@ -40,6 +40,14 @@ function findAllSectionsAndPopulate(callback) {
     .populate('textbooks')
     .populate('course')
     .populate('professor')
+    .exec(function(err, sections) {
+        callback(err, sections);
+    })
+}
+
+//Returns all
+function findAllSections(callback) {
+    Section.find()
     .exec(function(err, sections) {
         callback(err, sections);
     })
